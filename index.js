@@ -1,3 +1,4 @@
+require("dotenv").config()
 const { Server } = require("socket.io")
 const express = require("express")
 const app = express()
@@ -7,16 +8,15 @@ const server = http.createServer(app)
 const io = new Server(server, {
 	cors: { origin: "*" },
 })
-
 io.on("connection", socket => {
 	console.log("a user connected")
 
 	socket.on("blog", newBlog => {
-		console.log("From HERE", newBlog)
+		console.log("New Blog", newBlog.author)
 		io.emit("blog", newBlog)
 	})
 })
-require("dotenv").config()
+
 const DB = process.env.DB_URL
 const mongoose = require("mongoose")
 const Blog = require("./models/posts")
