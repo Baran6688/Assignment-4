@@ -1,7 +1,7 @@
 const form = document.querySelector("#form")
 const blogsDiv = document.querySelector(".posts")
 const errDiv = document.querySelector("#error")
-const socket = io("ws://https://pureblogz.onrender.com/blog")
+const socket = io("ws://pureblogz.onrender.com/blog")
 
 // Blogs
 let blogs = []
